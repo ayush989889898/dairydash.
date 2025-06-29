@@ -135,8 +135,8 @@ body {
 }
 
 .imga {
-    background-image: url("../img/background.jpg");
-    background: linear-gradient(white), url(../img/background.jpg);
+    background-image: url("background.jpg");
+    background: linear-gradient(white), url(background.jpg);
     height: 650px;
     width: 1315px;
     background-repeat: no-repeat;
@@ -402,7 +402,7 @@ a {
 
 
 .background {
-    background-image: url('../img/bg1.jpg');
+    background-image: url('bg1.jpg');
     background-size: cover;           /* Scales image to cover the div */
     background-position: center;      /* Centers the image */
     background-repeat: no-repeat;     /* Prevents tiling */
