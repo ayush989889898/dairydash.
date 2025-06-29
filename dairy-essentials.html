@@ -5,7 +5,7 @@ session_start();
 
 <head>
     <title>Online milk product</title>
-    <link rel="stylesheet" href="css/p1.css">
+    <link rel="stylesheet" href="p1.css">
 </head>
 
 <body>
@@ -31,11 +31,11 @@ session_start();
         </div>
 
         <div class="topnav-right" style="margin-left: 100px;">
-            <a href="addcart.html"><img src="img/cart.png" height="20" width="20"><?php echo $count; ?></a>
+            <a href="addcart.html"><img src="cart.png" height="20" width="20"><?php echo $count; ?></a>
             
             <?php if (isset($_SESSION['order_submitted']) && $_SESSION['order_submitted'] === false): ?>
                 <a href="deliverystatus.html">
-                    <img src="img/package.png" alt="Delivery Icon" style="width: 24px; margin-top: -5px; vertical-align: middle; margin-right: 5px;">
+                    <img src="package.png" alt="Delivery Icon" style="width: 24px; margin-top: -5px; vertical-align: middle; margin-right: 5px;">
                 </a>
             <?php endif; ?>
         </div>
@@ -46,7 +46,7 @@ session_start();
     <selection class="items">
 
             <div class="item">
-                <img src="img/milk.jpg" alt="Milk 500ml">
+                <img src="milk.jpg" alt="Milk 500ml">
                 <div class="product-info">
                     <h3>Milk (500ml)</h3>
                     <p><strong>Rs. 39</strong>&nbsp;&nbsp;<del>Rs. 49</del></p>
@@ -61,7 +61,7 @@ session_start();
                 </div>
 
             <div class="item">
-                <img src="img/ghee.jpg" alt="Ghee 1L">
+                <img src="ghee.jpg" alt="Ghee 1L">
                 <div class="product-info">
                     <h3>Ghee (1L)</h3>
                     <p><strong>Rs. 750</strong>&nbsp;&nbsp;<del>Rs. 850</del></p>
@@ -77,7 +77,7 @@ session_start();
 
 
             <div class="item">
-                <img src="img/curd.jpg" alt="Curd 100gms">
+                <img src="curd.jpg" alt="Curd 100gms">
                 <div class="product-info">
                     <h3>Curd (100gms)</h3>
                     <p><strong>Rs. 60</strong>&nbsp;&nbsp;<del>Rs. 75</del></p>
@@ -92,7 +92,7 @@ session_start();
             </div>
 
             <div class="item">
-                <img src="img/butter.jpg" alt="Butter 200gms">
+                <img src="butter.jpg" alt="Butter 200gms">
                 <div class="product-info">
                     <h3>Butter (200gms)</h3>
                     <p><strong>Rs. 250</strong>&nbsp;&nbsp;<del>Rs. 280</del></p>
@@ -106,7 +106,7 @@ session_start();
             </div>
 
             <div class="item">
-                <img src="img/cheese.webp" alt="Cheese 200gms">
+                <img src="cheese.webp" alt="Cheese 200gms">
                 <div class="product-info">
                     <h3>Cheese (200gms)</h3>
                     <p><strong>Rs. 150</strong>&nbsp;&nbsp;<del>Rs. 190</del></p>
@@ -122,7 +122,7 @@ session_start();
 
         
             <div class="item">
-                <img src="img/cottage-cheese.jpg" alt="Cottage Cheese 200gms">
+                <img src="cottage-cheese.jpg" alt="Cottage Cheese 200gms">
                 <div class="product-info">
                     <h3>Cottage Cheese (200gms)</h3>
                     <p><strong>Rs. 200</strong>&nbsp;&nbsp;<del>Rs. 240</del></p>
@@ -138,7 +138,7 @@ session_start();
 
         
             <div class="item">
-                <img src="img/paneer.jpg" alt="Paneer 500gms">
+                <img src="paneer.jpg" alt="Paneer 500gms">
                 <div class="product-info">
                     <h3>Paneer (500gms)</h3>
                     <p><strong>Rs. 120</strong>&nbsp;&nbsp;<del>Rs. 160</del></p>
@@ -155,7 +155,7 @@ session_start();
 
         
             <div class="item">
-                <img src="img/chaas.jpg" alt="Plain Chaas">
+                <img src="chaas.jpg" alt="Plain Chaas">
                 <div class="product-info">
                     <h3>Plain Chaas</h3>
                     <p><strong>Rs. 70</strong>&nbsp;&nbsp;<del>Rs. 85</del></p>
@@ -171,7 +171,7 @@ session_start();
 
         
             <div class="item">
-                <img src="img/cream.jpg" alt="Dairy Cream 200ml">
+                <img src="cream.jpg" alt="Dairy Cream 200ml">
                 <div class="product-info">
                     <h3>Dairy Cream (200ml)</h3>
                     <p><strong>Rs. 120</strong>&nbsp;&nbsp;<del>Rs. 150</del></p>
