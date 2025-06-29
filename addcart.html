@@ -112,7 +112,8 @@
                 const row = document.createElement("tr");
                 row.innerHTML = `
             <td>${index + 1}</td>
-            <td><img src="${item.image}" alt="${item.name}"></td>
+            <td><img src="${item.image.replace('img/', '')}" alt="${item.name}"></td>
+
             <td>${item.name}</td>
             <td>₹${item.price}</td>
             <td>
