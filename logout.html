@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logout Page</title>
+<link rel="stylesheet" href="css/logout.css">
+</head>
+<body>
+
+<div class="logout-container">
+    <h2>Are you sure you want to logout?</h2>
+    <p>Click the button below to logout from your account.</p>
+    <button id="logoutBtn" class="logout-btn">Logout</button>
+</div>
+
+<script>
+    document.getElementById("logoutBtn").addEventListener("click", function() {
+        // Clear login status
+        localStorage.setItem("isLoggedIn", "false");
+        
+        // Optional: clear other user data
+        // localStorage.removeItem("registeredEmail");
+        // localStorage.removeItem("registeredPassword");
+        // localStorage.removeItem("cartCount");
+
+        alert("You have been logged out.");
+        window.location.href = "login.html";
+    });
+</script>
+
+</body>
+</html>

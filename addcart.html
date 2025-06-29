@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>My Cart</title>
+    <link rel="stylesheet" href="css/addcart.css">
+
+</head>
+
+<body>
+
+    <div class="topnav">
+
+        <div class="brand">
+            <!-- <img src="logo.jpg" alt="Dairy Dash Logo" class="logo"> -->
+            <a href="index.html"><span class="brand-name">Dairy Dash</span></a>
+        </div>
+
+        <div class="nav-links">
+            <a class="active" href="index.html">HOME</a>
+            <a href="index.html#products">OUR PRODUCT</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="contactus.html">CONTACT</a>
+        </div>
+
+        <div class="topnav-right">
+            <!-- This block shows if the user is NOT logged in -->
+            <div id="nav-guest" style="display: none;">
+                <a href="login.html">LOGIN</a>
+                <a href="regis.html">REGISTER</a>
+            </div>
+        
+            <!-- This block shows if the user IS logged in -->
+            <div id="nav-logged-in" style="display: none;">
+                <a href="logout.html">LOGOUT</a>
+                <a href="addcart.html">
+                    <img src="img/cart.png" style="width: 21px;">
+                    
+                </a>
+                <a id="delivery-link" href="deliverystatus.html" style="display: none;">
+                    <img src="img/package.png" alt="Delivery Icon" style="width: 24px; margin-top: -13px; vertical-align: middle; margin-right: 5px;">
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+    <h1 align="center" style="margin-top: 45px;">MY CART</h1>
+
+    <table id="cart-table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <h2 style="text-align:center;" id="grand-total"></h2>
+
+    <div class="button1">
+        <button onclick="openModal()">Place Order</button>
+    </div>
+
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 style="color: black;">Shipping Details</h2>
+            <br>
+            <form onsubmit="redirectToPage(event)">
+                <input type="text" name="name" placeholder="Name" required><br>
+                <input type="text" name="last_name" placeholder="Last Name" required><br>
+                <input type="email" name="email" placeholder="Email" required><br>
+                <input type="tel" name="phone" placeholder="Phone Number" pattern="^\d{10}$"
+                    title="Phone number must be 10 digits" required><br>
+                <input type="text" name="address" placeholder="Address" required><br>
+                <input type="text" name="city" placeholder="City" required><br>
+                <input type="text" name="pincode" placeholder="Pincode" pattern="^\d{6}$"
+                    title="Pincode must be exactly 6 digits" required><br>
+
+                <!-- <a href="payment.php"> -->
+                <button type="submit" name="submit">Submit Order</button></a>
+            </form>
+        </div>
+    </div>
+    <script>
+
+        function redirectToPage(event) {
+            event.preventDefault(); // stop normal form submission
+            window.location.href = "payment.html";
+        }
+
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const tbody = document.querySelector("#cart-table tbody");
+            tbody.innerHTML = "";
+
+            let grandTotal = 0;
+
+            cart.forEach((item, index) => {
+                const total = item.price * item.qty;
+                grandTotal += total;
+
+                const row = document.createElement("tr");
+                row.innerHTML = `
+            <td>${index + 1}</td>
+            <td><img src="${item.image}" alt="${item.name}"></td>
+            <td>${item.name}</td>
+            <td>₹${item.price}</td>
+            <td>
+                <input type="number" min="1" value="${item.qty}" data-index="${index}" class="qty-input" />
+            </td>
+            <td>₹${total}</td>
+            <td>
+                <button class="btn-remove" data-index="${index}">Remove</button>
+            </td>
+        `;
+                tbody.appendChild(row);
+            });
+
+            document.getElementById("grand-total").textContent =
+                `Grand Total: ₹${grandTotal}`;
+        }
+
+        document.addEventListener("click", e => {
+            if (e.target.classList.contains("btn-remove")) {
+                const index = e.target.dataset.index;
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                cart.splice(index, 1);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                loadCart();
+            }
+        });
+
+        document.addEventListener("input", e => {
+            if (e.target.classList.contains("qty-input")) {
+                const index = e.target.dataset.index;
+                const newQty = parseInt(e.target.value);
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                if (newQty > 0) {
+                    cart[index].qty = newQty;
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    loadCart();
+                }
+            }
+        });
+
+
+
+        function openModal() {
+            document.getElementById("orderModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("orderModal").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            var modal = document.getElementById("orderModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+        window.onload = loadCart;
+
+        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+        const paymentDone = localStorage.getItem("paymentDone") === "true";
+
+        if (isLoggedIn) {
+            document.getElementById("nav-guest").style.display = "none";
+            document.getElementById("nav-logged-in").style.display = "block";
+
+            // Optionally update cart count if you have such an element:
+            const cartCount = localStorage.getItem("cartCount") || 0;
+            if (document.getElementById("cart-count")) {
+                document.getElementById("cart-count").textContent = cartCount;
+            }
+
+            // Show/hide delivery link
+            if (paymentDone) {
+                document.getElementById("delivery-link").style.display = "inline-block";
+            } else {
+                document.getElementById("delivery-link").style.display = "none";
+            }
+        } else {
+            document.getElementById("nav-guest").style.display = "block";
+            document.getElementById("nav-logged-in").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>

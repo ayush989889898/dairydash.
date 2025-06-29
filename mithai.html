@@ -1,0 +1,200 @@
+<?php
+session_start();
+?>
+<html>
+
+<head>
+    <title>Online milk product</title>
+    <link rel="stylesheet" href="css/p1.css">
+</head>
+
+<body>
+    <?php
+    $count = 0;
+    if (isset($_SESSION['cart'])) {
+        $count = count($_SESSION['cart']);
+    }
+    ?>
+    <div class="topnav">
+        <div class="brand">
+            <a href="index.html"><span class="brand-name">Dairy Dash</span></a>
+        </div>
+
+        <div class="nav-links">
+            <a href="dairy-essentials.html">DAIRY ESSENTIALS</a>
+            <a href="ice-cream.html">ICE-CREAM</a>
+            <a href="mithai.html">MITHAI</a>
+            <a href="srikhand.html">SHRIKHAND</a>
+        </div>
+
+        <div class="topnav-right" style="margin-left: 100px;">
+            <a href="addcart.html"><img src="img/cart.png" height="20" width="20"><?php echo $count; ?></a>
+            
+            <?php if (isset($_SESSION['order_submitted']) && $_SESSION['order_submitted'] === false): ?>
+                    <a href="deliverystatus.html">
+                        <img src="img/package.png" alt="Delivery Icon" style="width: 24px; margin-top: -5px; vertical-align: middle; margin-right: 5px;">
+                    </a>
+                <?php endif; ?>
+        </div>
+    </div>
+
+    <section class="items">
+
+        <div class="item">
+            <img src="img/peda.jpg" alt="Pure milk Pedas">
+            <div class="product-info">
+                <h3>Pure milk Pedas (250gms)</h3>
+                <p><strong>Rs. 350</strong>&nbsp;&nbsp;<del>Rs. 420</del></p>
+                <p><span class="discount">(17% OFF)</span></p>
+                <p class="desc">Delicious pedas made from pure cow milk. Rich in texture and perfect for celebrations.</p>
+            </div>
+            <button class="btn add-to-cart" 
+                data-name="Pure milk Pedas (250gms)" 
+                data-price="350" 
+                data-image="img/peda.jpg">Add To Cart</button>
+        </div>
+    
+        <div class="item">
+            <img src="img/mavapeda.jpeg" alt="Mawa Peda">
+            <div class="product-info">
+                <h3>Mawa Peda (250gms)</h3>
+                <p><strong>Rs. 240</strong>&nbsp;&nbsp;<del>Rs. 290</del></p>
+                <p><span class="discount">(17% OFF)</span></p>
+                <p class="desc">Classic mawa pedas, rich in flavor and made from fresh khoya and cardamom.</p>
+            </div>
+            <button class="btn add-to-cart" 
+                data-name="Mawa Peda (250gms)" 
+                data-price="240" 
+                data-image="img/mavapeda.jpeg">Add To Cart</button>
+        </div>
+    
+        <div class="item">
+            <img src="img/brownpeda.jpg" alt="Barela Peda">
+            <div class="product-info">
+                <h3>Barela Peda (250gms)</h3>
+                <p><strong>Rs. 240</strong>&nbsp;&nbsp;<del>Rs. 280</del></p>
+                <p><span class="discount">(14% OFF)</span></p>
+                <p class="desc">Brown pedas with caramelized mawa for an authentic, rich taste experience.</p>
+            </div>
+            <button class="btn add-to-cart" 
+                data-name="Barela Peda (250gms)" 
+                data-price="240" 
+                data-image="img/brownpeda.jpg">Add To Cart</button>
+        </div>
+    
+        <div class="item">
+            <img src="img/kesar-Peda.jpg" alt="Sugarfree Kesari Peda">
+            <div class="product-info">
+                <h3>Sugarfree Kesari Peda (250gms)</h3>
+                <p><strong>Rs. 270</strong>&nbsp;&nbsp;<del>Rs. 310</del></p>
+                <p><span class="discount">(13% OFF)</span></p>
+                <p class="desc">Healthy yet indulgent peda, infused with saffron and sweetened naturally.</p>
+            </div>
+            <button class="btn add-to-cart" 
+                data-name="Sugarfree Kesari Peda (250gms)" 
+                data-price="270" 
+                data-image="img/kesar-Peda.jpg">Add To Cart</button>
+        </div>
+    
+        <div class="item">
+            <img src="img/burffee.jpeg" alt="Burfi">
+            <div class="product-info">
+                <h3>Burfi (250gms)</h3>
+                <p><strong>Rs. 235</strong>&nbsp;&nbsp;<del>Rs. 290</del></p>
+                <p><span class="discount">(19% OFF)</span></p>
+                <p class="desc">Soft and delicious burfi made from condensed milk and a hint of cardamom.</p>
+            </div>
+            <button class="btn add-to-cart" 
+                data-name="Burfi (250gms)" 
+                data-price="235" 
+                data-image="img/burffee.jpeg">Add To Cart</button>
+        </div>
+    
+        <div class="item">
+            <img src="img/KesarDryfruitBurfi.jpg" alt="Kesar Dryfruit Burfi">
+            <div class="product-info">
+                <h3>Kesar Dryfruit Burfi (250gms)</h3>
+                <p><strong>Rs. 220</strong>&nbsp;&nbsp;<del>Rs. 270</del></p>
+                <p><span class="discount">(19% OFF)</span></p>
+                <p class="desc">Luxury sweet treat packed with saffron and crunchy dry fruits. Perfect for gifting.</p>
+            </div>
+            <button class="btn add-to-cart" 
+                data-name="Kesar Dryfruit Burfi (250gms)" 
+                data-price="220" 
+                data-image="img/KesarDryfruitBurfi.jpg">Add To Cart</button>
+        </div>
+    
+        <div class="item">
+            <img src="img/pistaburfi.webp" alt="Pista Burfi">
+            <div class="product-info">
+                <h3>Pista Burfi (250gms)</h3>
+                <p><strong>Rs. 275</strong>&nbsp;&nbsp;<del>Rs. 320</del></p>
+                <p><span class="discount">(14% OFF)</span></p>
+                <p class="desc">A royal delight with rich pistachio flavor and soft texture for every sweet tooth.</p>
+            </div>
+            <button class="btn add-to-cart" 
+                data-name="Pista Burfi (250gms)" 
+                data-price="275" 
+                data-image="img/pistaburfi.webp">Add To Cart</button>
+        </div>
+    
+        <div class="item">
+            <img src="img/rabri.jpg" alt="Rabri">
+            <div class="product-info">
+                <h3>Rabri (250ml)</h3>
+                <p><strong>Rs. 350</strong>&nbsp;&nbsp;<del>Rs. 400</del></p>
+                <p><span class="discount">(13% OFF)</span></p>
+                <p class="desc">Creamy thick rabri slow-cooked with nuts and saffron. A traditional favorite.</p>
+            </div>
+            <button class="btn add-to-cart" 
+                data-name="Rabri (250ml)" 
+                data-price="350" 
+                data-image="img/rabri.jpg">Add To Cart</button>
+        </div>
+    
+        <div class="item">
+            <img src="img/yogurt.jpg" alt="Raw Milk Yogurt">
+            <div class="product-info">
+                <h3>Raw Milk Yogurt (250gms)</h3>
+                <p><strong>Rs. 355</strong>&nbsp;&nbsp;<del>Rs. 400</del></p>
+                <p><span class="discount">(11% OFF)</span></p>
+                <p class="desc">Rich, creamy yogurt made from raw milk. Packed with probiotics and nutrients.</p>
+            </div>
+            <button class="btn add-to-cart" 
+                data-name="Raw Milk Yogurt (250gms)" 
+                data-price="355" 
+                data-image="img/yogurt.jpg">Add To Cart</button>
+        </div>
+    
+    </section>
+    
+</body>
+
+<script>
+    document.querySelectorAll(".add-to-cart").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const name = btn.dataset.name;
+            const price = parseFloat(btn.dataset.price);
+            const image = btn.dataset.image;
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            let existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({
+                    name,
+                    price,
+                    image,
+                    qty: 1
+                });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            window.location.href = "addcart.html";
+        });
+    });
+</script>
+
+</html>

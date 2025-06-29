@@ -1,0 +1,61 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+<div class="wrapper">
+    <h1>Login</h1>
+    <form id="login-form">
+
+
+        <div class="input-box">
+            <input type="text" name="email" placeholder="Email" required>
+            <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+            <input type="password" name="pwd" placeholder="Password" required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>        
+        <button type="submit" class="btn">Login</button>
+        <div class="register-link">
+            <p>New here? <a href="regis.html">Sign Up Instead</a></p>
+        </div>   
+    </form>
+</div>
+
+</body>
+
+<script>
+document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const email = this.email.value;
+    const password = this.pwd.value;
+
+    // Retrieve saved credentials
+    const savedEmail = localStorage.getItem("registeredEmail");
+    const savedPassword = localStorage.getItem("registeredPassword");
+
+    if (!savedEmail) {
+        // No email registered yet
+        alert("Email not found. Please register first.");
+    } else if (email !== savedEmail) {
+        alert("Email not found. Please register first");
+    } else if (password !== savedPassword) {
+        alert("Wrong password.");
+    } else {
+        localStorage.setItem("isLoggedIn", "true");
+        alert("Login successful!");
+        window.location.href = "index.html";
+    }
+});
+</script>
+
+    
+</html>
